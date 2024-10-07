@@ -28,9 +28,14 @@ export default function App() {
 
       <View style={styles.items}>
         {
-          taskItems.map((item, index)=>
-          <Task key={index} text={item}/>)
-        }
+          taskItems.map((item, index)=>{
+           return(
+            <TouchableOpacity key={index} onPress={()=> completeTask()}>
+          <Task  text={item}/>
+
+            </TouchableOpacity>
+           )
+        })}
       </View>
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.writeTaskWrapper}>
         <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)}/>
@@ -79,7 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     // borderColor: '#C0C0C0',
     borderColor:'black',
-    width: 250,
+    width: 300,
     borderRadius:60,
     borderWidth:1,
   },
